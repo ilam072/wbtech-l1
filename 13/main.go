@@ -1,19 +1,55 @@
 package main
 
+import "fmt"
+
 func main() {
-	// 1 способ
-	a := 5 // 0101
-	b := 7 // 0111
+	// 1 способ: XOR-обмен
+	a := 5
+	b := 7
 
-	a = a ^ b // a = 0101 ^ 0111 = 0010
-	b = a ^ b // b = 0010 ^ 0111 = 0101
-	a = a ^ b // a = 0010 ^ 0101 = 0111
+	a = a ^ b
+	b = a ^ b
+	a = a ^ b
 
-	// 2 способ
+	fmt.Println("XOR swap (5, 7):", a, b)
+
+	// 2 способ: сложение / вычитание
 	a = 5
 	b = 7
 
-	a = a + b // a = 12
-	b = a - b // b = 12 - 7 = 5
-	a = a - b // a = 12 - 5 = 7
+	a = a + b
+	b = a - b
+	a = a - b
+
+	fmt.Println("Add/Sub swap (5, 7):", a, b)
+
+	// оба числа отрицательные
+	a = -3
+	b = -8
+
+	a = a ^ b
+	b = a ^ b
+	a = a ^ b
+
+	fmt.Println("XOR swap (-3, -8):", a, b)
+
+	// одно отрицательное число
+	a = -10
+	b = 4
+
+	a = a + b
+	b = a - b
+	a = a - b
+
+	fmt.Println("Add/Sub swap (-10, 4):", a, b)
+
+	// нулевые значения
+	a = 0
+	b = 0
+
+	a = a ^ b
+	b = a ^ b
+	a = a ^ b
+
+	fmt.Println("XOR swap (0, 0):", a, b)
 }
