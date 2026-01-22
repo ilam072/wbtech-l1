@@ -24,11 +24,11 @@ func gen(numbers ...int) chan int {
 }
 
 func squares(numbers chan int) chan int {
-	res := make(chan int)
+	res := make(chan int, cap(numbers))
 
 	go func() {
 		for num := range numbers {
-			res <- num * num
+			res <- num * 2
 		}
 		close(res)
 	}()
